@@ -895,9 +895,16 @@ public abstract class AbstractJavaCodegen extends DefaultCodegen implements Code
     }
 
     @Override
-    public String toDefaultValue(Schema schema) {
-        schema = ModelUtils.getReferencedSchema(this.openAPI, schema);
+    public String toDefaultValue(Schema passedSchema) {
+        Schema<?> schema = ModelUtils.getReferencedSchema(this.openAPI, passedSchema);
         if (ModelUtils.isArraySchema(schema)) {
+            if (ModelUtils.isGenerateAliasAsModel()) {
+                String schemaType = getSchemaType(passedSchema);
+                if ((ModelUtils.isSet(schema) && !"Set".equals(schemaType))
+                        || (!ModelUtils.isSet(schema) && !"List".equals(schemaType))){
+                    return "new " + schemaType + "()";
+                }
+            }
             final String pattern;
             if (ModelUtils.isSet(schema)) {
                 String mapInstantiationType = instantiationTypes().getOrDefault("set", "LinkedHashSet");
@@ -909,6 +916,12 @@ public abstract class AbstractJavaCodegen extends DefaultCodegen implements Code
 
             return String.format(Locale.ROOT, pattern, "");
         } else if (ModelUtils.isMapSchema(schema) && !(schema instanceof ComposedSchema)) {
+            if (ModelUtils.isGenerateAliasAsModel()) {
+                String schemaType = getSchemaType(passedSchema);
+                if (!"Map".equals(schemaType)){
+                    return "new " + schemaType + "()";
+                }
+            }
             if (schema.getProperties() != null && schema.getProperties().size() > 0) {
                 // object is complex object with free-form additional properties
                 if (schema.getDefault() != null) {
