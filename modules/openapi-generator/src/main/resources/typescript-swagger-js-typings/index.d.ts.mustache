@@ -1,0 +1,15 @@
+import { SwaggerClient, SwaggerInit } from 'swagger-client';
+import { Api } from './api';
+
+{{#models}}
+{{#model}}
+export * from './{{importPath}}';
+{{/model}}
+{{/models}}
+
+export interface Init extends SwaggerInit {
+  baseUrl?: string;
+}
+
+declare const api: (init: Init) => ReturnType<SwaggerClient<Api>>;
+export default api;
