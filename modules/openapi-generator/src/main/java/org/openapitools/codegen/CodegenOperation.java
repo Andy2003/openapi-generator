@@ -62,6 +62,81 @@ public class CodegenOperation {
     public String operationIdCamelCase; // for class names
     public String operationIdSnakeCase;
 
+    public CodegenOperation() {
+    }
+
+    protected CodegenOperation(CodegenOperation other)
+    {
+        this.hasAuthMethods = other.hasAuthMethods;
+        this.hasConsumes = other.hasConsumes;
+        this.hasProduces = other.hasProduces;
+        this.hasParams = other.hasParams;
+        this.hasOptionalParams = other.hasOptionalParams;
+        this.hasRequiredParams = other.hasRequiredParams;
+        this.returnTypeIsPrimitive = other.returnTypeIsPrimitive;
+        this.returnSimpleType = other.returnSimpleType;
+        this.subresourceOperation = other.subresourceOperation;
+        this.isMap = other.isMap;
+        this.isArray = other.isArray;
+        this.isMultipart = other.isMultipart;
+        this.isResponseBinary = other.isResponseBinary;
+        this.isResponseFile = other.isResponseFile;
+        this.hasReference = other.hasReference;
+        this.isRestfulIndex = other.isRestfulIndex;
+        this.isRestfulShow = other.isRestfulShow;
+        this.isRestfulCreate = other.isRestfulCreate;
+        this.isRestfulUpdate = other.isRestfulUpdate;
+        this.isRestfulDestroy = other.isRestfulDestroy;
+        this.isRestful = other.isRestful;
+        this.isDeprecated = other.isDeprecated;
+        this.isCallbackRequest = other.isCallbackRequest;
+        this.uniqueItems = other.uniqueItems;
+        this.hasDefaultResponse = other.hasDefaultResponse;
+        this.hasErrorResponseObject = other.hasErrorResponseObject;
+        this.path = other.path;
+        this.operationId = other.operationId;
+        this.returnType = other.returnType;
+        this.returnFormat = other.returnFormat;
+        this.httpMethod = other.httpMethod;
+        this.returnBaseType = other.returnBaseType;
+        this.returnContainer = other.returnContainer;
+        this.summary = other.summary;
+        this.unescapedNotes = other.unescapedNotes;
+        this.notes = other.notes;
+        this.baseName = other.baseName;
+        this.defaultResponse = other.defaultResponse;
+        this.discriminator = other.discriminator;
+        this.consumes = other.consumes;
+        this.produces = other.produces;
+        this.prioritizedContentTypes = other.prioritizedContentTypes;
+        this.servers = other.servers;
+        this.bodyParam = other.bodyParam;
+        this.allParams = other.allParams;
+        this.bodyParams = other.bodyParams;
+        this.pathParams = other.pathParams;
+        this.queryParams = other.queryParams;
+        this.headerParams = other.headerParams;
+        this.implicitHeadersParams = other.implicitHeadersParams;
+        this.formParams = other.formParams;
+        this.cookieParams = other.cookieParams;
+        this.requiredParams = other.requiredParams;
+        this.optionalParams = other.optionalParams;
+        this.authMethods = other.authMethods;
+        this.tags = other.tags;
+        this.responses = other.responses;
+        this.callbacks = other.callbacks;
+        this.imports = other.imports;
+        this.examples = other.examples;
+        this.requestBodyExamples = other.requestBodyExamples;
+        this.externalDocs = other.externalDocs;
+        this.vendorExtensions = other.vendorExtensions;
+        this.nickname = other.nickname;
+        this.operationIdOriginal = other.operationIdOriginal;
+        this.operationIdLowerCase = other.operationIdLowerCase;
+        this.operationIdCamelCase = other.operationIdCamelCase;
+        this.operationIdSnakeCase = other.operationIdSnakeCase;
+    }
+
     /**
      * Check if there's at least one parameter
      *

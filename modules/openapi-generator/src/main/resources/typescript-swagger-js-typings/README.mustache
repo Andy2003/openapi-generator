@@ -1,0 +1,22 @@
+## {{npmName}}@{{npmVersion}}
+
+### Building
+
+To install the required dependencies run:
+```
+npm install
+```
+
+### Usage
+
+	import api from './index';
+
+	(async () => {
+		const service = await api({ spec: {} });
+
+		const response = await service.apis.teg.operation({ param: 'abc' });
+		if (response.status === 200) {
+			response.body.companyId;
+		}
+	})();
+

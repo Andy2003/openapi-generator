@@ -1,0 +1,11 @@
+{{#apiInfo}}
+{{#apis}}
+import { {{classname}} } from './api/{{classname}}';
+{{/apis}}
+
+export type Api = {
+	{{#apis}}
+	{{#operations}}'{{ tagName }}': {{ classname }}{{/operations}}{{^-last}},{{/-last}}
+	{{/apis}}
+}
+{{/apiInfo}}
